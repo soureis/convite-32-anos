@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trintei + 2! — Meus 32 Anos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 1. OCULTA CABEÇALHOS E BARRAS DE PORTAIS */
+    header, .header, .navbar, #navbar, .siteHeader, footer, .footer, .breadcrumb, div[role="banner"] {
+      display: none !important;
+      height: 0 !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      background-color: #020c0e !important;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      color: #f3efe6;
+    }
+
+    .invite-wrapper {
+      background-color: #020c0e;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 12px;
+      width: 100%;
+    }
+
+    /* CARD DO CONVITE */
+    .invite-card {
+      width: 100%;
+      max-width: 440px;
+      background-color: #041c1e;
+      border-radius: 32px;
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(91, 227, 182, 0.15);
+      position: relative;
+      overflow: hidden;
+      padding: 44px 22px 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* VETORES DAS ONDAS E LINHAS DOURADAS */
+    .bg-waves-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* COROA MINIMALISTA */
+    .crown-icon {
+      width: 46px;
+      height: 46px;
+      margin-bottom: 2px;
+      stroke: #5be3b6;
+      fill: none;
+    }
+
+    /* TIPOGRAFIA */
+    .script-title {
+      font-family: 'Caveat', cursive;
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: #5be3b6;
+      line-height: 1.05;
+      transform: rotate(-3deg);
+      margin-bottom: 12px;
+      text-shadow: 0 0 18px rgba(91, 227, 182, 0.35);
+    }
+
+    .subtitle-caps {
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      color: #f1ebd9;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .main-title {
+      font-size: 2.15rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-transform: uppercase;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .number-highlight {
+      color: #5be3b6;
+      font-size: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .underline-32 {
+      display: block;
+      width: 78px;
+      height: 6px;
+      margin: -4px auto 8px;
+    }
+
+    .intro-text {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #cbd5d1;
+      line-height: 1.55;
+      max-width: 320px;
+      margin: 6px 0 16px;
+    }
+
+    /* DIVISÓRIA */
+    .pill-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 60px;
+      margin-bottom: 18px;
+    }
+
+    .pill-divider-line {
+      flex: 1;
+      height: 1.5px;
+      background: #399f84;
+      opacity: 0.8;
+    }
+
+    .pill-divider-dot {
+      width: 18px;
+      height: 3px;
+      background: #5be3b6;
+      border-radius: 3px;
+    }
+
+    /* GRID: DATA, HORÁRIO, LOCAL */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.25fr;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 16px 0;
+      margin-bottom: 18px;
+    }
+
+    .info-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 4px;
+    }
+
+    .info-col:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .info-icon {
+      width: 26px;
+      height: 26px;
+      stroke: #5be3b6;
+      stroke-width: 1.8;
+      fill: none;
+      margin-bottom: 8px;
+    }
+
+    .info-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: #5be3b6;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f7f5ef;
+      line-height: 1.35;
+    }
+
+    .info-sub {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #9cb1ab;
+      margin-top: 2px;
+    }
+
+    /* FRASE CURSIVA */
+    .callout-script {
+      font-family: 'Caveat', cursive;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #5be3b6;
+      line-height: 1.25;
+      max-width: 310px;
+      margin-bottom: 2px;
+    }
+
+    .underline-phrase {
+      width: 110px;
+      height: 5px;
+      margin-bottom: 16px;
+    }
+
+    /* FORMULÁRIO */
+    .rsvp-form {
+      width: 100%;
+      background: rgba(4, 28, 30, 0.85);
+      border: 1px solid rgba(91, 227, 182, 0.45);
+      border-radius: 20px;
+      padding: 16px 16px 14px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    .rsvp-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #cbd5d1;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    .rsvp-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(91, 227, 182, 0.35);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+      margin-bottom: 12px;
+    }
+
+    .rsvp-input:focus {
+      border-color: #5be3b6;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 14px rgba(91, 227, 182, 0.35);
+    }
+
+    .rsvp-input::placeholder {
+      color: #6a827d;
+      font-size: 0.85rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.15s ease, filter 0.2s ease;
+      border: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-confirm {
+      background: linear-gradient(135deg, #5ce1b6 0%, #2fb78f 100%);
+      color: #031c17;
+      box-shadow: 0 4px 15px rgba(91, 227, 182, 0.4);
+    }
+
+    .btn-confirm:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-cancel {
+      background: rgba(255, 255, 255, 0.04);
+      color: #cbd5d1;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+
+    .status-alert {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.82rem;
+      padding: 10px;
+      border-radius: 8px;
+      line-height: 1.4;
+    }
+
+    .status-alert.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+    }
+
+    /* TACINHAS BRINDANDO */
+    .toast-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="invite-wrapper">
+  <div class="invite-card">
+    
+    <!-- ARTE VETORIAL DO FUNDO: ONDAS VERDE-ESMERALDA E FIOS DOURADOS -->
+    <svg class="bg-waves-svg" viewBox="0 0 440 940" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gold-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#edd596"/>
+          <stop offset="50%" stop-color="#c99c43"/>
+          <stop offset="100%" stop-color="#edd596"/>
+        </linearGradient>
+
+        <linearGradient id="wave-top-grad" x1="0%" y1="0%" x2="80%" y2="80%">
+          <stop offset="0%" stop-color="#0f4f46"/>
+          <stop offset="50%" stop-color="#0a3933"/>
+          <stop offset="100%" stop-color="#041f1e"/>
+        </linearGradient>
+
+        <linearGradient id="wave-bot-grad1" x1="100%" y1="100%" x2="20%" y2="40%">
+          <stop offset="0%" stop-color="#11554c"/>
+          <stop offset="60%" stop-color="#0a3731"/>
+          <stop offset="100%" stop-color="#031b1c"/>
+        </linearGradient>
+
+        <linearGradient id="wave-bot-grad2" x1="100%" y1="100%" x2="0%" y2="30%">
+          <stop offset="0%" stop-color="#0d463d"/>
+          <stop offset="100%" stop-color="#03191a"/>
+        </linearGradient>
+      </defs>
+
+      <!-- 1. Grande Onda Superior Esquerda -->
+      <path d="M0,0 L260,0 C220,110 160,190 80,250 C35,285 10,300 0,320 Z" fill="url(#wave-top-grad)"/>
+      <path d="M260,0 C220,110 160,190 80,250 C35,285 10,300 0,320" stroke="url(#gold-stroke)" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- 2. Fio dourado sutil no canto superior direito -->
+      <path d="M340,0 C380,80 420,160 440,220" stroke="url(#gold-stroke)" stroke-width="1.2" opacity="0.4"/>
+
+      <!-- 3. Onda Inferior Esquerda -->
+      <path d="M0,670 C65,700 95,760 100,840 C102,880 100,910 95,940 L0,940 Z" fill="#062d29" opacity="0.7"/>
+      <path d="M0,670 C65,700 95,760 100,840 C102,880 100,910 95,940" stroke="url(#gold-stroke)" stroke-width="1.4" opacity="0.6"/>
+
+      <!-- 4. Grande Onda Inferior Direita -->
+      <path d="M440,550 C360,600 270,670 170,760 C90,830 40,890 10,940 L440,940 Z" fill="url(#wave-bot-grad1)"/>
+      <path d="M440,550 C360,600 270,670 170,760 C90,830 40,890 10,940" stroke="url(#gold-stroke)" stroke-width="2.2" stroke-linecap="round"/>
+
+      <!-- 5. Segunda Onda Inferior Direita -->
+      <path d="M440,700 C360,750 290,820 230,940 L440,940 Z" fill="url(#wave-bot-grad2)"/>
+      <path d="M440,700 C360,750 290,820 230,940" stroke="url(#gold-stroke)" stroke-width="1.8" opacity="0.85"/>
+    </svg>
+
+    <div class="content">
+      <!-- COROA COM 5 RAIOS -->
+      <svg class="crown-icon" viewBox="0 0 48 48">
+        <line x1="24" y1="10" x2="24" y2="4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="16" y1="12" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+        <line x1="32" y1="12" x2="36" y2="8" stroke-width="2" stroke-linecap="round"/>
+        <line x1="9" y1="21" x2="4" y2="21" stroke-width="2" stroke-linecap="round"/>
+        <line x1="39" y1="21" x2="44" y2="21" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 32 L15 19 L24 26 L33 19 L36 32 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <div class="script-title">Trintei + 2!</div>
+
+      <div class="subtitle-caps">VEM COMEMORAR COMIGO</div>
+      <div class="main-title">
+        <span>MEUS</span>
+        <span class="number-highlight">32</span>
+        <span>ANOS!</span>
+      </div>
+
+      <svg class="underline-32" viewBox="0 0 78 6" fill="none">
+        <path d="M2,4 Q39,1 76,3" stroke="#5ce1b6" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+
+      <p class="intro-text">
+        Ano novo, idade nova e o motivo perfeito para reunir os amigos e brindar à vida.
+      </p>
+
+      <div class="pill-divider">
+        <div class="pill-divider-line"></div>
+        <div class="pill-divider-dot"></div>
+        <div class="pill-divider-line"></div>
+      </div>
+
+      <!-- GRID COM DATA, HORÁRIO E LOCAL -->
+      <div class="info-grid">
+        <div class="info-col">
+          <svg class="info-icon" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <div class="info-label">DATA</div>
+          <div class="info-value">21 de Janeiro<br>de 2027</div>
+          <div class="info-sub">(Quinta-feira)</div>
+        </div>
+
+        <div class="info-col">
+          <svg class="info-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="info-label">HORÁRIO</div>
+          <div class="info-value" style="font-size: 1rem; margin-top: 4px;">20:00h</div>
+        </div>
+
+        <div class="info-col">
+          <svg class="info-icon" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <div class="info-label">LOCAL</div>
+          <div class="info-value" style="font-size: 0.76rem;">Rua Terra Nova, 115 -</div>
+          <div class="info-sub" style="font-size: 0.72rem;">Jardim América,<br>Cariacica</div>
+        </div>
+      </div>
+
+      <!-- FRASE DE DESTAQUE COM PINCELADA -->
+      <div class="callout-script">
+        Sua presença é fundamental para a noite ficar completa.
+      </div>
+
+      <svg class="underline-phrase" viewBox="0 0 110 5" fill="none">
+        <path d="M2,3 Q55,1 108,3" stroke="#5ce1b6" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <!-- FORMULÁRIO COM NOME E WHATSAPP -->
+      <div class="rsvp-form" id="rsvp-container">
+        <label for="guest-name" class="rsvp-label">Seu Nome Completo:</label>
+        <input 
+          type="text" 
+          id="guest-name" 
+          class="rsvp-input" 
+          placeholder="Digite seu nome completo aqui..." 
+          autocomplete="name"
+          required
+        >
+
+        <label for="guest-phone" class="rsvp-label">WhatsApp / Telefone:</label>
+        <input 
+          type="tel" 
+          id="guest-phone" 
+          class="rsvp-input" 
+          placeholder="(DDD) 99999-9999" 
+          autocomplete="tel"
+          required
+        >
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-confirm" onclick="enviarRSVP(true)">
+            <span>CONFIRMAR PRESENÇA</span>
+            <span>🥂</span>
+          </button>
+          <button type="button" class="btn btn-cancel" onclick="enviarRSVP(false)">
+            <span>INFELIZMENTE NÃO PODEREI IR</span>
+          </button>
+        </div>
+
+        <div id="rsvp-status" class="status-alert"></div>
+      </div>
+
+      <!-- TACINHAS BRINDANDO IDÊNTICAS AO ORIGINAL -->
+      <div class="toast-container">
+        <svg viewBox="0 0 220 50" width="100%" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="26" x2="74" y2="26" stroke="#d5dfdc" stroke-width="1.2" opacity="0.65"/>
+          <line x1="146" y1="26" x2="210" y2="26" stroke="#d5dfdc" stroke-width="1.2" opacity="0.65"/>
+
+          <line x1="110" y1="7" x2="110" y2="2" stroke="#f4ede0" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="103" y1="9" x2="99" y2="5" stroke="#f4ede0" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="117" y1="9" x2="121" y2="5" stroke="#f4ede0" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="105" cy="14" r="1.3" fill="#5be3b6"/>
+          <circle cx="115" cy="13" r="1.3" fill="#5be3b6"/>
+
+          <!-- Taça Esquerda -->
+          <g transform="translate(97, 26) rotate(16) translate(-14, -20)">
+            <path d="M4,2 C4,13 14,16 14,16 C14,16 24,13 24,2 Z" stroke="#f4ede0" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M6,7 C10,9 18,9 22,7" stroke="#5be3b6" stroke-width="1.1" stroke-linecap="round"/>
+            <line x1="14" y1="16" x2="14" y2="30" stroke="#f4ede0" stroke-width="1.5"/>
+            <line x1="6" y1="30" x2="22" y2="30" stroke="#f4ede0" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+
+          <!-- Taça Direita -->
+          <g transform="translate(123, 26) rotate(-16) translate(-14, -20)">
+            <path d="M4,2 C4,13 14,16 14,16 C14,16 24,13 24,2 Z" stroke="#f4ede0" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M6,7 C10,9 18,9 22,7" stroke="#5be3b6" stroke-width="1.1" stroke-linecap="round"/>
+            <line x1="14" y1="16" x2="14" y2="30" stroke="#f4ede0" stroke-width="1.5"/>
+            <line x1="6" y1="30" x2="22" y2="30" stroke="#f4ede0" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  var URL_WEBHOOK = "https://script.google.com/macros/s/AKfycbzHA45nClh7syqs0DHtwKjOF5ggrTZVgAlqVxMDS0xwZbdSxftZPb3X0Hp17YsoQ4ku/exec";
+
+  function enviarRSVP(confirmado) {
+    var nomeInput = document.getElementById("guest-name");
+    var phoneInput = document.getElementById("guest-phone");
+    var statusDiv = document.getElementById("rsvp-status");
+    var rsvpContainer = document.getElementById("rsvp-container");
+
+    var nome = nomeInput.value.trim();
+    var telefone = phoneInput ? phoneInput.value.trim() : "";
+
+    if (!nome) {
+      statusDiv.className = "status-alert error";
+      statusDiv.style.display = "block";
+      statusDiv.innerText = "Por favor, digite seu nome completo antes de confirmar.";
+      nomeInput.focus();
+      return;
+    }
+
+    if (!telefone) {
+      statusDiv.className = "status-alert error";
+      statusDiv.style.display = "block";
+      statusDiv.innerText = "Por favor, digite seu WhatsApp ou telefone.";
+      phoneInput.focus();
+      return;
+    }
+
+    statusDiv.className = "status-alert";
+    statusDiv.style.display = "block";
+    statusDiv.style.background = "rgba(91, 227, 182, 0.15)";
+    statusDiv.style.color = "#a4f5db";
+    statusDiv.innerText = "Registrando sua resposta...";
+
+    var payload = {
+      nome: nome,
+      telefone: telefone,
+      confirmado: confirmado
+    };
+
+    fetch(URL_WEBHOOK, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(function() {
+      if (confirmado) {
+        rsvpContainer.innerHTML = 
+          "<div style='padding: 14px 0; text-align: center;'>" +
+            "<div style='font-size: 2.8rem; margin-bottom: 8px;'>🥂✨</div>" +
+            "<div style='font-family: Caveat, cursive; font-size: 2.4rem; color: #5ce1b6; line-height: 1.2;'>" +
+              "Presença confirmada!" +
+            "</div>" +
+            "<div style='font-size: 0.92rem; color: #cbd5d1; margin-top: 10px; line-height: 1.45;'>" +
+              "Obrigado, <b>" + nome + "</b>! Sua presença foi confirmada e nos vemos no dia 21 de Janeiro!" +
+            "</div>" +
+          "</div>";
+      } else {
+        rsvpContainer.innerHTML = 
+          "<div style='padding: 14px 0; text-align: center;'>" +
+            "<div style='font-family: Caveat, cursive; font-size: 2.2rem; color: #5ce1b6; line-height: 1.2;'>" +
+              "Resposta registrada!" +
+            "</div>" +
+            "<div style='font-size: 0.92rem; color: #cbd5d1; margin-top: 10px; line-height: 1.45;'>" +
+              "Obrigado por avisar, <b>" + nome + "</b>. Sentiremos sua falta na comemoração!" +
+            "</div>" +
+          "</div>";
+      }
+    })
+    .catch(function(err) {
+      statusDiv.className = "status-alert error";
+      statusDiv.innerText = "Ocorreu um erro ao salvar. Tente novamente.";
+    });
+  }
+</script>
+</body>
+</html>
